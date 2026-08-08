@@ -1,0 +1,74 @@
+2.a) Comentario
+
+<!-- Código controlado el día 12/08/2009 -->
+
+Ubicación: Puede colocarse en cualquier parte del documento (dentro de <head> o <body>), ya que no es contenido visible.
+
+Efecto: No produce ningún efecto en la visualización de la página. Es un comentario que sirve como nota interna para el programador/desarrollador y no es interpretado por el navegador.
+
+Sintaxis: <!-- ... --> no es una etiqueta HTML propiamente dicha, sino una marca de comentario. No admite atributos.
+
+2.b) Div
+
+<div id="bloque1">Contenido del bloque1</div>
+
+Ubicación: Dentro del <body>.
+
+Efecto: Crea un contenedor genérico a nivel de bloque que agrupa contenido (en este caso, el texto "Contenido del bloque1"). Por defecto genera un salto de línea antes y después, ya que es un elemento de tipo block.
+
+- Etiqueta <div> ... </div>: apertura y cierre, ambas obligatorias.
+- Atributo id="bloque1": no obligatorio. Asigna un identificador único al elemento dentro del documento, utilizado normalmente para aplicar estilos CSS o referenciarlo desde scripts o enlaces internos.
+
+2.c) Imagen
+
+<img src="" alt="lugar imagen" id="im1" name="im1" width="32" height="32" longdesc="detalles.htm" />
+
+Ubicación: Dentro del <body>.
+
+Efecto: Inserta una imagen en el documento. Al estar src vacío, no habrá imagen real cargada (se mostrará el ícono de "imagen rota" o el texto alternativo), pero se reserva un espacio de 32x32 píxeles.
+
+- Etiqueta <img />: elemento vacío (void element), no tiene contenido ni cierre aparte; se autocierra con /> (sintaxis XHTML). Obligatoria la apertura/autocierre.
+- src="": obligatorio. Ruta/URL del archivo de imagen a mostrar (aquí vacío).
+- alt="lugar imagen": obligatorio. Texto alternativo mostrado si la imagen no puede cargarse; fundamental para accesibilidad.
+- id="im1": no obligatorio. Identificador único del elemento.
+- name="im1": no obligatorio (atributo obsoleto/deprecado, se usaba en HTML antiguo para referenciar el elemento desde scripts; reemplazado por id).
+- width="32": no obligatorio. Ancho de la imagen en píxeles.
+- height="32": no obligatorio. Alto de la imagen en píxeles.
+- longdesc="detalles.htm": no obligatorio. Enlace a un documento con descripción detallada de la imagen, orientado a accesibilidad.
+
+2.d) Metaetiquetas
+
+<meta name="keywords" lang="es" content="casa, compra, venta, alquiler " />
+<meta http-equiv="expires" content="16-Sep-2019 7:49 PM" />
+
+Ubicación: Dentro del <head> del documento.
+
+Efecto: No producen ningún efecto visible en la página. Proporcionan metadatos:
+- El primero define palabras clave del documento, orientadas a motores de búsqueda.
+- El segundo simula una cabecera HTTP indicando la fecha de expiración/caducidad del documento (útil para el manejo de caché por parte de navegadores o proxies).
+
+Etiqueta <meta />: elemento vacío (void element), se autocierra. Debe ir siempre dentro de <head>.
+
+Primer <meta>:
+- name="keywords": obligatorio (debe existir name o http-equiv). Indica el tipo de metadato, en este caso "palabras clave".
+- lang="es": no obligatorio. Indica el idioma del contenido especificado en content.
+- content="casa, compra, venta, alquiler ": obligatorio. Contiene el valor asociado al metadato (las palabras clave en sí).
+
+Segundo <meta>:
+- http-equiv="expires": obligatorio (alternativa a name). Simula una cabecera HTTP; "expires" indica que el valor se refiere a la expiración del documento.
+- content="16-Sep-2019 7:49 PM": obligatorio. Fecha y hora de expiración asociadas.
+
+2.e) Enlace (ancla)
+
+<a href="http://www.e-style.com.ar/resumen.html" type="text/html" hreflang="es" charset="utf-8" rel="help">Resumen HTML </a>
+
+Ubicación: Dentro del <body>.
+
+Efecto: Crea un hipervínculo. Al hacer clic sobre el texto "Resumen HTML" el navegador dirige al usuario hacia la URL especificada.
+
+- Etiqueta <a> ... </a>: apertura y cierre, ambas obligatorias.
+- href="http://www.e-style.com.ar/resumen.html": obligatorio. Define la URL de destino del enlace.
+- type="text/html": no obligatorio. Indica el tipo MIME del recurso enlazado.
+- hreflang="es": no obligatorio. Indica el idioma del recurso al que apunta el enlace (español).
+- charset="utf-8": no obligatorio (atributo obsoleto en HTML5). Indicaba la codificación de caracteres del recurso enlazado.
+- rel="help": no obligatorio. Especifica la relación entre el documento actual y el recurso enlazado; en este caso, indica que el destino es un recurso de ayuda.
