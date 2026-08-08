@@ -267,6 +267,42 @@
                                                         <!ELEMENT FORM - - (%block;|SCRIPT)+ -(FORM)>
         </p>
 
+        <h1>Ejercicio 5</h1>
+        <p>
+            7.4.4 Metadatos
+            Nota. El Marco de Descripción de Recursos (Resource Description Framework) del W3C (ver [RDF10]) se
+            convirtió en Recomendación del W3C en febrero de 1999. El RDF permite a los autores especificar metadatos
+            legibles por máquina sobre documentos HTML y otros recursos accesibles por la red.
+
+            El HTML permite a los autores especificar metadatos -- información sobre un documento más que contenido del
+            propio documento -- de diferentes de maneras.
+
+            Por ejemplo, para especificar el autor de un documento, puede utilizarse el elemento META como sigue:
+
+            <META name="Author" content="Dave Raggett">
+            El elemento META especifica una propiedad (aquí "Author") y le asigna un valor (aquí "Dave Raggett").
+
+            Esta especificación no define un conjunto de propiedades legales de metadatos. El significado de una
+            propiedad y el conjunto de valores legales para esa propiedad debería estar definida en un diccionario de
+            referencia llamado perfil. Por ejemplo, un perfil diseñado para ayudar a los motores de búsqueda a indexar
+            documentos podría definir propiedades tales como "author", "copyright", "keywords", etc.
+
+            Especificación de metadatos
+            En general, la especificación de metadatos implica dos pasos:
+
+            Declaración de una propiedad y de un valor para esta propiedad. Esto puede hacerse de dos maneras:
+            Desde dentro de un documento, por medio del elemento META.
+            Desde fuera de un documento, vinculando los metadatos por medio del elemento LINK (véase la sección sobre
+            tipos de vínculos).
+            Referencia a un perfil en el que se definen la propiedad y sus valores legales. Para designar un perfil, se
+            usa el atributo profile del elemento HEAD.
+            Obsérvese que al estar definido un perfil por el elemento HEAD, se aplica el mismo perfil a todos los
+            elementos META y LINK de la cabecera del documento.
+
+            Los agentes de usuario no necesitan soportar los mecanismos de metadatos. Para aquellos que opten por
+            soportar metadatos, esta especificación no define cómo deberían interpretarse los metadatos.
+        </p>
+
     </body>
 
     </html>
