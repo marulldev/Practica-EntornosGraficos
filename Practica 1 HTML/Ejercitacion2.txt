@@ -72,3 +72,50 @@ Efecto: Crea un hipervínculo. Al hacer clic sobre el texto "Resumen HTML" el na
 - hreflang="es": no obligatorio. Indica el idioma del recurso al que apunta el enlace (español).
 - charset="utf-8": no obligatorio (atributo obsoleto en HTML5). Indicaba la codificación de caracteres del recurso enlazado.
 - rel="help": no obligatorio. Especifica la relación entre el documento actual y el recurso enlazado; en este caso, indica que el destino es un recurso de ayuda.
+
+2.f) tabla
+
+Ubicación: Se coloca dentro del <body> del documento HTML, ya que es contenido visible de la página (una tabla de datos).
+
+Efecto: Crea una tabla de 4 columnas por 3 filas (1 fila de encabezados + 2 filas de datos), con un título visible arriba ("Título"), una fila de encabezados de columna (vacío, A, B, C), y dos filas de datos con encabezado de fila ("1º" y "2º") y celdas vacías rellenas con espacio no separable.
+
+<table>
+
+Efecto: Define el contenedor principal de la tabla.
+Ubicación: Dentro del <body>.
+Obligatorio: Sí, es la etiqueta raíz de toda tabla.
+
+Atributo width="200" — Efecto: fija el ancho de la tabla en 200 píxeles. Obligatorio: No.
+Atributo summary="Datos correspondientes al ejercicio vencido" — Efecto: describe el propósito de la tabla para lectores de pantalla (accesibilidad). Obligatorio: No (además, obsoleto en HTML5, aunque válido en HTML 4.01/XHTML).
+<caption>
+
+Efecto: Define el título o leyenda de la tabla, visible junto a ella.
+Ubicación: Debe ir inmediatamente después de la etiqueta de apertura <table>.
+Obligatorio: No.
+
+Atributo align="top" — Efecto: posiciona el título arriba de la tabla. Obligatorio: No.
+<tr>
+
+Efecto: Define una fila de la tabla ("table row"). Se usa tres veces en este ejemplo.
+Ubicación: Dentro de <table>.
+Obligatorio: Sí, es necesaria para estructurar cualquier fila.
+
+<th>
+
+Efecto: Define una celda de encabezado, ya sea de columna o de fila. El contenido se muestra en negrita y centrado por defecto.
+Ubicación: Dentro de <tr>.
+Obligatorio: No es obligatoria en toda tabla, pero sí necesaria si se quiere marcar semánticamente qué celdas son encabezados.
+
+Atributo scope="col" — Efecto: indica que ese encabezado aplica a toda la columna (usado en la fila de "A", "B", "C"). Obligatorio: No, pero recomendado por accesibilidad.
+Atributo scope="row" — Efecto: indica que ese encabezado aplica a toda la fila (usado en "1º" y "2º"). Obligatorio: No, pero recomendado por accesibilidad.
+<td>
+
+Efecto: Define una celda de datos común dentro de una fila.
+Ubicación: Dentro de <tr>.
+Obligatorio: Sí, para cualquier celda que no sea de encabezado.
+
+&nbsp;
+
+Efecto: Entidad HTML que inserta un espacio de no separación; se usa aquí para evitar que las celdas vacías colapsen visualmente (sin alto/ancho).
+Ubicación: Dentro de <th> o <td> que no tienen contenido real.
+Obligatorio: No es una etiqueta, es opcional usarla, pero es buena práctica para mantener la consistencia visual de la tabla.
