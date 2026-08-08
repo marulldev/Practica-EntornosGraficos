@@ -100,6 +100,152 @@
         </p>
 
 
+        <h1>Ejercicio 4</h1>
+        <p>
+            En esta especificación, todas las declaraciones de elementos y atributos vienen acompañadas del fragmento
+            correspondiente de la definición del tipo de documento. Hemos optado por incluir en la especificación
+            fragmentos del DTD en lugar de intentar describir las propiedades de un elemento de una forma que sea más
+            abordable, pero más larga y menos precisa. El tutorial que sigue permitirá a los lectores que no estén
+            familiarizados con el SGML leer el DTD y entender los detalles técnicos de la especificación HTML.
+
+            3.3.1 Comentarios DTD
+            En los DTDs, los comentarios pueden extenderse a lo largo de una o más líneas. En el DTD, los comentarios
+            están delimitados por un par de marcas "--", p.ej.:
+
+            <!ELEMENT PARAM - O EMPTY -- valor de propiedad con nombre -->
+                Aquí, el comentario "valor de propiedad con nombre" explica el uso del tipo de elemento PARAM. Los
+                comentarios de un DTD son únicamente informativos.
+
+                3.3.2 Definiciones de entidades paramétricas
+                El DTD HTML comienza con una serie de definiciones de entidades paramétricas. Una definición de entidad
+                paramétrica define una clase de macro a la que se puede hacer referencia y ser expandida en cualquier
+                otra parte del DTD. Estas macros no pueden aparecer en documentos HTML, sólo en el DTD. Otros tipos de
+                macros, llamadas referencias de caracteres, sí pueden utilizarse en el texto de un documento HTML o
+                dentro de los valores de los atributos.
+
+                Cuando se hace referencia a una entidad paramétrica por su nombre en el DTD, ésta se expande,
+                sustituyéndose por una cadena.
+
+                Una definición de entidad paramétrica comienza con la palabra clave <!ENTITY % seguida por el nombre de
+                    la entidad, la cadena entre comillas a la que se expande la entidad, y por último un> de cierre. Las
+                    apariciones de entidades paramétricas dentro de un DTD comienzan con un "%", seguido por el nombre
+                    de la entidad paramétrica, y finalmente por un ";" opcional.
+
+                    El siguiente ejemplo define la cadena a la que se expandirá la entidad "%fontstyle;".
+
+                    <!ENTITY % fontstyle "TT | I | B | BIG | SMALL">
+                        La cadena a la que se expande la entidad paramétrica puede contener otros nombres de entidades
+                        paramétricas. Estos nombres se expanden recursivamente. En el siguiente ejemplo, la entidad
+                        paramétrica "%inline;" se define de modo que incluya las entidades paramétricas "%fontstyle;",
+                        "%phrase;", "%special;" y "%formctrl;".
+
+                        <!ENTITY % inline "#PCDATA | %fontstyle; | %phrase; | %special; | %formctrl;">
+                            Hay dos entidades DTD que aparecen frecuentemente en el DTD HTML: "%block;" e "%inline;". Se
+                            utilizan cuando el modelo de contenido incluye elementos en bloque y elementos en línea,
+                            respectivamente (definidos en la sección sobre la estructura global de un documento HTML).
+
+                            3.3.3 Declaraciones de elementos
+                            El grueso del DTD HTML consiste en la declaración de tipos de elementos y sus atributos. La
+                            palabra clave <!ELEMENT comienza una declaración y el carácter> la termina. Entre ellos se
+                                especifica:
+
+                                El nombre del elemento.
+                                Si las etiquetas del elemento son opcionales. Si aparecen dos guiones después del nombre
+                                del elemento tanto la etiqueta inicial como la final son obligatorias. Un guión seguido
+                                por la letra "O" indica que puede omitirse la etiqueta final. Un par de letras "O"
+                                indican que tanto la etiqueta inicial como la final pueden omitirse.
+                                Los contenidos del elemento, si los hay. El contenido admitido para un elemento se
+                                denomina su modelo de contenido. Los tipos de elemento diseñados de modo que no tengan
+                                contenido se llaman elementos vacíos. El modelo de contenido de tales tipos de elemento
+                                se declara con la palabra clave "EMPTY".
+                                En este ejemplo:
+
+                                <!ELEMENT UL - - (LI)+>
+                                    El tipo de elemento declarado es UL.
+                                    Los dos guiones indican que tanto la etiqueta inicial <UL> como la final </UL> son
+                                    obligatorias para este tipo de elemento.
+                                    El modelo de contenido de este tipo de elemento se ha declarado como "al menos un
+                                    elemento LI". Más adelante se explica cómo especificar los modelos de contenido.
+                                    Este ejemplo ilustra la declaración de un tipo de elemento vacío:
+
+                                    <!ELEMENT IMG - O EMPTY>
+                                        El tipo de elemento declarado es IMG.
+                                        El guión y la "O" que le sigue indican que la etiqueta final puede omitirse,
+                                        pero eso, junto al modelo de contenido "EMPTY", implica que la etiqueta final
+                                        debe ser omitida.
+                                        La palabra clave "EMPTY" significa que las apariciones de este tipo no deben
+                                        tener contenido.
+                                        Definiciones del modelo de contenido
+                                        El modelo de contenido describe cuál puede ser el contenido de una aparición de
+                                        un tipo de elemento. Las definiciones del modelo de contenido pueden incluir:
+
+                                        Nombres de los tipos de elementos permitidos o prohibidos (p.ej., el elemento UL
+                                        contiene apariciones del tipo de elemento LI, y el tipo de elemento P no puede
+                                        contener otros elementos P).
+                                        Entidades DTD (p.ej., el elemento LABEL contiene apariciones de la entidad
+                                        paramétrica "%inline;").
+                                        Texto de documento (indicado mediante la estructura SGML "#PCDATA"). El texto
+                                        puede contener referencias de caracteres. Recuérdese que éstas comienzan con & y
+                                        terminan con un punto y coma (p.ej., "Las aventuras de Ast&eacute;rix" contiene
+                                        la referencia a la entidad de caracteres del carácter "e con acento agudo").
+                                        El modelo de contenido de un elemento se especifica de acuerdo a la sintaxis
+                                        siguiente. Obsérvese que la lista que sigue es una simplificación de las reglas
+                                        de sintaxis de SGML y no habla, por ejemplo, de precedencias.
+
+                                        ( ... )
+                                        Delimita un grupo.
+                                        A
+                                        A debe aparecer una sola vez.
+                                        A+
+                                        A debe aparece una o más veces.
+                                        A?
+                                        A debe aparecer cero o una veces.
+                                        A*
+                                        A puede aparecer cero o más veces.
+                                        +(A)
+                                        A puede aparecer.
+                                        -(A)
+                                        A no debe aparecer.
+                                        A | B
+                                        O bien A o bien B deben aparecer, pero no las dos.
+                                        A , B
+                                        Tanto A como B deben aparecer, y en ese orden.
+                                        A & B
+                                        Tanto A como B deben aparecer, en cualquier orden.
+                                        Aquí presentamos algunos ejemplos sacados del DTD de HTML:
+
+                                        <!ELEMENT UL - - (LI)+>
+                                            El elemento UL debe contener uno o más elementos LI.
+
+                                            <!ELEMENT DL - - (DT|DD)+>
+                                                El elemento DL debe contener uno o más elementos DT o DD en cualquier
+                                                orden.
+
+                                                <!ELEMENT OPTION - O (#PCDATA)>
+                                                    El elemento OPTION sólo puede contener texto y entidades, tales como
+                                                    &amp;. Esto se indica con el tipo de datos de SGML #PCDATA.
+
+                                                    Algunos tipos de elementos HTML usan una característica adicional de
+                                                    SGML para excluir elementos de su modelo de contenido. Los elementos
+                                                    excluidos van precedidos de un guión, y van al final de la
+                                                    descripción del modelo de contenido. Las exclusiones explícitas
+                                                    prevalecen sobre los elementos permitidos.
+
+                                                    En este ejemplo, el -(A) significa que el elemento A no puede
+                                                    aparecer en otro elemento A (es decir, los vínculos no pueden estar
+                                                    anidados).
+
+                                                    <!ELEMENT A - - (%inline;)* -(A)>
+                                                        Obsérvese que el tipo de elemento A es parte de la entidad
+                                                        paramétrica del DTD "%inline;", pero está excluido
+                                                        explícitamente debido al -(A).
+
+                                                        Análogamente, la siguiente declaración del tipo de elemento FORM
+                                                        prohíbe los formularios anidados:
+
+                                                        <!ELEMENT FORM - - (%block;|SCRIPT)+ -(FORM)>
+        </p>
+
     </body>
 
     </html>
