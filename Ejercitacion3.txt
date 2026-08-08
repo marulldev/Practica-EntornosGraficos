@@ -1,0 +1,33 @@
+3.a) Diferencias entre los segmentos de código y sus visualizaciones
+
+Línea 1:
+<a href="http://www.google.com.ar">Click aquí para ir a Google</a>
+
+Es un enlace simple hacia una página externa. Al hacer clic, el navegador carga la página de Google reemplazando la página actual en la misma ventana/pestaña. El atributo href es obligatorio y define el destino del enlace.
+
+Línea 2:
+<a href="http://www.google.com.ar" target="_blank">Click aquí para ir a Google</a>
+
+Es igual al anterior (mismo destino), pero incorpora el atributo target="_blank" (no obligatorio), que indica que el enlace se abrirá en una nueva ventana o pestaña del navegador, sin reemplazar la página actual. Visualmente el texto del enlace se ve igual, pero el comportamiento al hacer clic difiere.
+
+Línea 3:
+<a href="http://www.google.com.ar" type="text/html" hreflang="es" charset="utf-8" rel="help">
+
+Este enlace agrega atributos adicionales no obligatorios: type (tipo MIME del recurso destino), hreflang (idioma del recurso destino, en este caso español), charset (codificación de caracteres del recurso destino, obsoleto en HTML5) y rel="help" (indica que el recurso enlazado es de ayuda). Estos atributos no modifican la visualización del enlace en el navegador, solo aportan información adicional (metadatos) para navegadores, buscadores o herramientas de accesibilidad. Además, en este caso no se observa el texto del enlace ni la etiqueta de cierre </a>, por lo que el código está incompleto.
+
+Línea 4:
+<a href="#">Click aquí para ir a Google</a>
+
+Aquí el href="#" no apunta a una URL externa sino que es un enlace "vacío" o ancla al inicio de la misma página. A pesar de que el texto dice "ir a Google", al hacer clic el enlace no realiza ninguna navegación real (o como máximo, vuelve al principio del propio documento). Es un ejemplo de una discrepancia entre lo que dice el texto visible y lo que realmente hace el enlace.
+
+Línea 5:
+<a href="#arriba">Click aquí para volver arriba</a>
+
+Este es un enlace interno (ancla) que apunta a un punto específico dentro de la misma página, identificado con el nombre "arriba". Al hacer clic, el navegador se desplaza (hace scroll) automáticamente hasta el elemento del documento cuyo id o name coincida con "arriba", sin cargar una nueva página.
+
+Línea 6:
+<a name="arriba" id="arriba"></a>
+
+Esta etiqueta no es un enlace que se hace clic, sino el punto de destino (el "ancla") al cual apuntan los enlaces internos como el de la línea 5. No tiene texto visible entre las etiquetas de apertura y cierre, por lo que no se ve reflejado en la página como un enlace clickeable; solo marca una posición del documento. Utiliza dos atributos con el mismo valor ("arriba"): name (forma antigua/obsoleta de nombrar anclas, propia de HTML cuatro) e id (forma moderna equivalente, recomendada en HTML5), ambos no obligatorios pero uno de los dos debe estar presente para que el ancla funcione como destino.
+
+En resumen: las diferencias entre estos segmentos están dadas por el uso de distintos atributos (target, type, hreflang, charset, rel, name, id) que no cambian el texto visible del enlace, pero sí modifican su comportamiento (si abre en la misma ventana o en una nueva, si navega a otra página o se desplaza dentro de la misma) o agregan información adicional no visible directamente en la página.
