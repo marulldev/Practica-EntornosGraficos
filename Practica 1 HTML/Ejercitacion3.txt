@@ -31,3 +31,249 @@ Línea 6:
 Esta etiqueta no es un enlace que se hace clic, sino el punto de destino (el "ancla") al cual apuntan los enlaces internos como el de la línea 5. No tiene texto visible entre las etiquetas de apertura y cierre, por lo que no se ve reflejado en la página como un enlace clickeable; solo marca una posición del documento. Utiliza dos atributos con el mismo valor ("arriba"): name (forma antigua/obsoleta de nombrar anclas, propia de HTML cuatro) e id (forma moderna equivalente, recomendada en HTML5), ambos no obligatorios pero uno de los dos debe estar presente para que el ancla funcione como destino.
 
 En resumen: las diferencias entre estos segmentos están dadas por el uso de distintos atributos (target, type, hreflang, charset, rel, name, id) que no cambian el texto visible del enlace, pero sí modifican su comportamiento (si abre en la misma ventana o en una nueva, si navega a otra página o se desplaza dentro de la misma) o agregan información adicional no visible directamente en la página.
+
+3.b) Diferencias entre los segmentos de código y sus visualizaciones
+
+Línea 1:
+<p><img src="im1.jpg" alt="imagen1" /><a href="http://www.google.com.ar">Click aquí</a></p>
+
+Aquí la imagen y el texto "Click aquí" son dos elementos independientes dentro del mismo párrafo. La imagen no forma parte del enlace <a>, por lo que solo el texto "Click aquí" es clickeable y lleva a Google. Al hacer clic sobre la imagen no ocurre ninguna navegación.
+
+Línea 2:
+<p><a href="http://www.google.com.ar"><img src="im1.jpg" alt="imagen1" /></a> Click aquí</p>
+
+En este caso es al revés: la imagen sí está contenida dentro de la etiqueta <a>, por lo que la imagen es clickeable y lleva a Google. Sin embargo, el texto "Click aquí" queda fuera de la etiqueta <a> (después de cerrarla), por lo que ese texto no es un enlace, es solo texto plano sin funcionalidad.
+
+Línea 3:
+<p><a href="http://www.google.com.ar"><img src="im1.jpg" alt="imagen1" />Click aquí</a></p>
+
+Aquí tanto la imagen como el texto "Click aquí" están dentro de la misma etiqueta <a>. Esto significa que todo el conjunto (imagen + texto) forma un único enlace: se puede hacer clic tanto sobre la imagen como sobre el texto, y ambos llevan al mismo destino (Google). Visualmente se ve la imagen seguida del texto, ambos como parte del mismo hipervínculo.
+
+Línea 4:
+<p><a href="http://www.google.com.ar"><img src="im1.jpg" alt="imagen1" /></a> <a href="http://www.google.com.ar">Click aquí</a></p>
+
+En este último caso hay dos etiquetas <a> distintas (dos enlaces separados), aunque ambas apuntan al mismo destino. La imagen es un enlace independiente y el texto "Click aquí" es otro enlace independiente. Funcionalmente el resultado es similar a la línea 3 (ambos elementos llevan a Google), pero estructuralmente son dos hipervínculos separados en lugar de uno solo que engloba ambos elementos.
+
+En resumen: la diferencia clave entre estos cuatro segmentos está en qué elementos quedan dentro o fuera de la etiqueta <a>:
+- Línea 1: solo el texto es enlace (la imagen no lo es).
+- Línea 2: solo la imagen es enlace (el texto no lo es).
+- Línea 3: imagen y texto forman un único enlace en conjunto.
+- Línea 4: imagen y texto son dos enlaces separados, pero con el mismo destino.
+
+
+
+
+3.c) Diferencias entre los segmentos de código y sus visualizaciones
+
+Segmento 1:
+<ul>
+<li>xxx</li>
+<li>yyy</li>
+<li>zzz</li>
+</ul>
+
+Es una lista no ordenada. La etiqueta <ul> agrupa los elementos <li> y cada uno de ellos se muestra precedido por una viñeta (punto), sin numeración. El orden visual de los ítems no implica secuencia numérica.
+
+Segmento 2:
+<ol>
+<li>xxx</li>
+<li>yyy</li>
+<li>zzz</li>
+</ol>
+
+Es una lista ordenada. La etiqueta <ol> agrupa los elementos <li>, y el navegador les asigna automáticamente una numeración correlativa (1, 2, 3) según el orden en que aparecen, sin necesidad de indicar el número manualmente.
+
+Segmento 3:
+<ol>
+<li>xxx</li>
+</ol>
+<ol>
+<li value="2">yyy</li>
+</ol>
+<ol>
+<li value="3">zzz</li>
+</ol>
+
+Aquí, en lugar de una única lista con tres elementos, hay tres listas <ol> independientes, cada una con un solo <li>. Como cada <ol> es una lista separada, por defecto cada una reiniciaría su numeración en 1. Para lograr que la numeración continúe como si fuera una sola secuencia (1, 2, 3), se utiliza el atributo value (no obligatorio) en los <li>, que fuerza manualmente el número que debe mostrarse en cada ítem. El resultado visual final es similar al segmento 2 (aparecen los números 1, 2 y 3), pero la estructura del código es distinta: son tres listas separadas en vez de una sola.
+
+Segmento 4:
+<blockquote>
+<p>1. xxx<br />
+2. yyy<br />
+3. zzz</p>
+</blockquote>
+
+En este caso no se utiliza ninguna lista real (ni <ul> ni <ol>). Los números "1.", "2." y "3." están escritos manualmente como texto plano dentro de un párrafo <p>, y los saltos de línea se generan con la etiqueta <br /> (salto de línea simple, no de párrafo). Además, todo el contenido está dentro de un <blockquote>, que es un elemento usado para citas textuales y que el navegador suele mostrar con sangría (indentado) respecto al margen. Visualmente puede parecerse a una lista numerada, pero semánticamente no lo es: es solo texto con apariencia de lista, indentado como cita.
+
+3.d) Diferencias entre los segmentos de código y sus visualizaciones
+
+Segmento 1:
+<table border="1" width="300">
+<tr>
+<th>Columna 1</th>
+<th>Columna 2</th>
+</tr>
+<tr>
+<td>Celda 1</td>
+<td>Celda 2</td>
+</tr>
+<tr>
+<td>Celda 3</td>
+<td>Celda 4</td>
+</tr>
+</table>
+
+Aquí la primera fila utiliza la etiqueta <th> (celda de encabezado) para "Columna 1" y "Columna 2". Por defecto, el navegador muestra el contenido de las celdas <th> centrado horizontalmente y en negrita, sin necesidad de aplicar ningún estilo adicional. Las demás filas usan <td> (celda de datos normal), que se muestra con el texto alineado a la izquierda y sin negrita, por defecto.
+
+Segmento 2:
+<table border="1" width="300">
+<tr>
+<td><div align="center"><strong>Columna1</strong></div></td>
+<td><div align="center"><strong>Columna 2</strong></div></td>
+</tr>
+<tr>
+<td>Celda 1</td>
+<td>Celda 2</td>
+</tr>
+<tr>
+<td>Celda 3</td>
+<td>Celda 4</td>
+</tr>
+</table>
+
+En este segmento, en cambio, la primera fila no usa <th>, sino <td> comunes. Para lograr visualmente el mismo efecto de centrado y negrita que en el segmento 1, se combinan manualmente varias etiquetas dentro de cada <td>: un <div align="center"> (que centra el contenido horizontalmente, atributo align no obligatorio y considerado obsoleto en HTML5, reemplazado por CSS) y una etiqueta <strong> (que aplica énfasis fuerte, mostrando el texto en negrita).
+
+En resumen: ambos segmentos producen una visualización final muy similar o idéntica (una tabla de 3 filas x 2 columnas, con la primera fila centrada y en negrita a modo de encabezado), pero la forma de lograrlo es distinta:
+- Segmento 1: usa la semántica correcta de tabla, aprovechando que <th> aplica centrado y negrita automáticamente por ser una celda de encabezado.
+- Segmento 2: usa celdas de datos comunes (<td>) y logra el mismo efecto visual "a mano", combinando <div align="center"> y <strong>, sin utilizar la etiqueta semánticamente adecuada para encabezados de tabla.
+
+Desde el punto de vista semántico y de accesibilidad, el segmento 1 es más correcto, ya que identifica claramente esas celdas como encabezados de columna (lo cual es interpretado correctamente por lectores de pantalla y otras herramientas), mientras que el segmento 2 solo logra una apariencia visual similar sin transmitir esa información semántica.
+
+3.e) Diferencias entre los segmentos de código y sus visualizaciones
+
+Segmento 1:
+
+<table width="200"> <caption> Título </caption> <tr> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> <tr> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> </table>
+
+Aquí el título "Título" se define mediante la etiqueta semántica <caption>, cuya función específica es asignar un título o leyenda a una tabla. Esta etiqueta debe colocarse inmediatamente después de <table> (antes de la primera fila <tr>), y el navegador la muestra por defecto centrada, por encima de la tabla, sin necesidad de indicar ningún colspan ni alineación manual. Es un único elemento fuera de la estructura de filas/celdas.
+
+Segmento 2:
+
+<table width="200"> <tr> <td colspan="3"><div align="center">Título</div></td> </tr> <tr> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> <tr> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> </table>
+
+En este caso no se usa <caption>, sino que el título se ubica dentro de una celda <td> común, que forma parte de la primera fila de la tabla. Para que esa celda ocupe visualmente el ancho de las tres columnas, se utiliza el atributo colspan="3" (no obligatorio), que hace que la celda se expanda abarcando 3 columnas en lugar de una sola. Además, para centrar el texto "Título" dentro de esa celda, se recurre nuevamente a <div align="center"> (al no usarse una etiqueta semántica de título, hay que centrar manualmente el contenido).
+
+3.f) Diferencias entre los segmentos de código y sus visualizaciones
+
+Segmento 1:
+
+<table width="200"> <tr> <td colspan="3"><div align="center">Título</div></td> </tr> <tr> <td rowspan="2" bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> <tr> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> </table>
+
+Aquí, en la segunda fila, la primera celda utiliza el atributo rowspan="2" (no obligatorio), que hace que esa celda se expanda verticalmente ocupando el espacio de 2 filas (la fila donde está definida y la siguiente). Por eso, en la tercera fila del código solo aparecen 2 celdas <td>, ya que la primera columna de esa fila ya está "ocupada" por la celda que viene expandida desde la fila anterior. Visualmente se genera una celda grande a la izquierda, que abarca dos filas de alto, junto a 4 celdas más pequeñas distribuidas en 2 filas y 2 columnas a su derecha.
+
+Segmento 2:
+
+<table width="200"> <tr> <td colspan="3"><div align="center">Título</div></td> </tr> <tr> <td colspan="2" bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> <tr> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> <td bgcolor="#dddddd">&nbsp;</td> </tr> </table>
+
+En este caso, en cambio, se utiliza el atributo colspan="2" (no obligatorio) en la primera celda de la segunda fila, lo que hace que esa celda se expanda horizontalmente ocupando el espacio de 2 columnas dentro de esa misma fila. La tercera fila del código sí tiene sus 3 celdas normales, sin combinaciones. Visualmente se genera una celda ancha en la parte superior izquierda (que ocupa 2 columnas) junto a una celda pequeña a su derecha, y debajo, una fila completa con 3 celdas normales.
+
+3.g) Diferencias entre los segmentos de código y sus visualizaciones
+
+Segmento 1:
+
+<table width="200" border="1"> <tr> <td colspan="3"><div align="center">Título</div></td> </tr> <tr> <td colspan="2" rowspan="2">&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td width="50%">&nbsp;</td> </tr> </table>
+
+Esta tabla tiene un total de 3 columnas (definidas por el colspan="3" de la fila del título). En la segunda fila, la primera celda combina dos atributos a la vez: colspan="2" (se expande ocupando 2 columnas) y rowspan="2" (además se expande ocupando 2 filas), por lo que esa celda ocupa un bloque de 2x2 dentro de la tabla. Junto a ella, en la misma fila, hay una celda normal que ocupa la tercera columna. En la tercera fila del código solo aparece una celda (con width="50%"), ya que las primeras dos columnas de esa fila ya están cubiertas por la celda combinada que viene desde la fila anterior; esa única celda corresponde a la tercera columna.
+
+Segmento 2:
+
+<table width="200" border="1" cellpadding="0" cellspacing="0"> <tr> <td colspan="2"><div align="center">Título</div></td> </tr> <tr> <td rowspan="2">&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td width="50%">&nbsp;</td> </tr> </table>
+
+Aquí la tabla tiene solo 2 columnas en total (el título usa colspan="2", no 3). En la segunda fila, la primera celda usa únicamente rowspan="2" (sin colspan), por lo que se expande solo verticalmente, ocupando 2 filas de una sola columna. Junto a ella hay una celda normal que ocupa la segunda columna. En la tercera fila solo aparece una celda (width="50%"), correspondiente a la segunda columna, ya que la primera columna de esa fila está cubierta por la celda con rowspan de la fila anterior.
+
+Además, este segmento incorpora dos atributos no presentes en el segmento 1: cellpadding="0" (no obligatorio, elimina el espacio interno entre el borde de cada celda y su contenido) y cellspacing="0" (no obligatorio, elimina el espacio entre celdas adyacentes). Esto hace que, visualmente, la tabla del segmento 2 se vea más "compacta", con las celdas pegadas entre sí y sin margen interno, a diferencia del segmento 1 que mantiene los espaciados por defecto del navegador.
+
+3.h) Diferencias entre los segmentos de código y sus visualizaciones
+
+Formulario 1:
+
+<form id="form1" name="form1" action="procesar.php" method="post" target="_blank"> <fieldset> <legend>LOGIN</legend> Usuario: <input type="text" id="usu1" name="usu1" value="xxx" /><br /> Clave: <input type="password" id="clave1" name="clave1" value="xxx" /> </fieldset> <input type="submit" id="boton1" name="boton1" value="Enviar" /> </form>
+
+Este formulario envía sus datos mediante el método POST (method="post") a la página procesar.php, y se abre en una nueva pestaña/ventana debido a target="_blank". Los campos están agrupados dentro de un <fieldset>, que dibuja un recuadro (borde) alrededor de ellos, con el título "LOGIN" mostrado gracias a la etiqueta <legend> (que se posiciona superpuesta sobre el borde superior del recuadro). El campo "Usuario" es de tipo text (input type="text"), por lo que el texto ingresado es visible, y ya viene precargado con el valor "xxx" (atributo value). El campo "Clave" es de tipo password (input type="password"), por lo que el texto ingresado se oculta con puntos o asteriscos, también precargado con "xxx". Al final hay un botón de tipo submit, que al presionarlo envía el formulario.
+
+Formulario 2:
+
+<form id="form2" name="form2" action="" method="get" target="_blank"> LOGIN<br /> <label>Usuario: <input type="text" id="usu2" name="usu2" /></label><br /> <label>Clave: <input type="text" id="clave2" name="clave2" /></label><br /> <input type="submit" id="boton2" name="boton2" value="Enviar" /> </form>
+
+A diferencia del primero, este formulario usa method="get" (los datos se envían visibles en la URL, en lugar de ocultos como con post), y su atributo action="" está vacío (por lo que el formulario se enviaría a la misma página en la que está). No utiliza <fieldset> ni <legend>: el texto "LOGIN" es simplemente texto plano seguido de un salto de línea <br />, por lo que no aparece dentro de ningún recuadro con título, solo como texto normal encima de los campos. Además, ambos campos ("Usuario" y "Clave") están definidos como input type="text", es decir, ninguno de los dos oculta el texto ingresado (ni siquiera el de clave, a diferencia del formulario 1). Cada campo está envuelto en una etiqueta <label>, lo cual asocia el texto descriptivo con el campo de forma semántica (mejora la accesibilidad y permite hacer clic sobre el texto para enfocar el campo), aunque visualmente no se note diferencia. Los campos, además, no tienen ningún value predefinido, por lo que aparecen vacíos.
+
+Formulario 3:
+
+<form id="form3" name="form3" action="mailto:xx@xx.com" enctype="text/plain" method="post" target="_blank"> <fieldset> <legend>LOGIN</legend> Usuario: <input type="text" id="usu3" name="usu3" /><br /> Clave: <input type="password" id="clave3" name="clave3" /> </fieldset> <input type="reset" id="boton3" name="boton3" value="Enviar" /> </form>
+
+Este formulario, en lugar de enviar sus datos a un script del servidor, usa action="mailto:xx@xx.com", lo que significa que al enviarse intentará abrir el cliente de correo electrónico predeterminado del usuario para mandar los datos por email a esa dirección. Junto con esto se utiliza el atributo enctype="text/plain" (no obligatorio), que define cómo se codifican los datos enviados, en este caso como texto plano (útil justamente para envíos por mailto). Al igual que el formulario 1, usa <fieldset> y <legend> para agrupar los campos con un recuadro y título "LOGIN", y el campo "Clave" es de tipo password (oculta el texto ingresado), mientras que "Usuario" es tipo text. La diferencia más importante y visualmente relevante está en el botón final: aquí se usa input type="reset" (en lugar de submit), por lo que, aunque el botón diga "Enviar" (por su atributo value="Enviar"), en realidad no envía el formulario, sino que restablece todos los campos a sus valores originales (los vacía o los deja como estaban al cargar la página). Esto representa un caso donde el texto visible del botón no corresponde con su verdadera función.
+
+En resumen, las diferencias principales entre los tres formularios son:
+
+Método de envío: post (formularios 1 y 3, datos ocultos) vs. get (formulario 2, datos visibles en la URL).
+Destino: un script del servidor (formularios 1 y 2) vs. una dirección de correo electrónico mediante mailto (formulario 3).
+Estructura visual: uso de fieldset y legend para un recuadro con título (formularios 1 y 3) vs. texto plano sin recuadro (formulario 2).
+Tipo de campos: password oculta el texto ingresado (formularios 1 y 3 en el campo clave) vs. text que lo muestra visible (formulario 2, en ambos campos).
+Tipo de botón: submit, que efectivamente envía el formulario (formularios 1 y 2) vs. reset, que restablece los campos sin enviar nada, a pesar de decir "Enviar" (formulario 3).
+
+
+3.i) Diferencias entre los segmentos de código y sus visualizaciones
+
+Botón 1:
+<label>Botón 1
+<button type="button" name="boton1" id="boton1">
+<img src="logo.jpg" alt="Botón con imagen" width="30" height="20" /><br />
+<b>CLICK AQUÍ</b></button></label>
+
+Aquí se utiliza la etiqueta <button>, que es un elemento de tipo contenedor (tiene apertura y cierre), lo cual permite incluir contenido enriquecido dentro de él, en este caso una imagen (<img>) seguida de un salto de línea (<br />) y luego texto en negrita (<b>CLICK AQUÍ</b>). Por lo tanto, el botón se visualiza con dos líneas: en la primera se ve la imagen "logo.jpg" (de 30x20 píxeles), y debajo el texto "CLICK AQUÍ" en negrita, todo dentro del área clickeable del botón. El atributo type="button" (obligatorio en este contexto para evitar que actúe como submit por defecto) indica que no envía el formulario automáticamente, solo dispara la acción que se le asocie (por ejemplo, mediante JavaScript). Además, todo el conjunto (la palabra "Botón 1" y el propio <button>) está envuelto en una etiqueta <label>, que asocia ese texto descriptivo con el control, aunque visualmente el texto "Botón 1" aparece por fuera y por encima del botón, ya que antecede al <br /> implícito antes del <button>.
+
+Botón 2:
+<label>Botón 2
+<input type="button" name="boton2" id="boton2" value="CLICK AQUÍ" />
+</label>
+
+En este caso se utiliza la etiqueta <input> con type="button", que es un elemento vacío (no tiene contenido ni etiqueta de cierre), por lo que solo puede mostrar texto plano como etiqueta del botón, definido mediante el atributo value="CLICK AQUÍ" (obligatorio en este caso, ya que es la única forma de indicar qué texto se mostrará dentro del botón). A diferencia del Botón 1, aquí no es posible insertar una imagen, texto en negrita, ni ningún otro elemento HTML dentro del botón: solo se muestra el texto simple "CLICK AQUÍ". Al igual que en el caso anterior, el conjunto está dentro de una etiqueta <label> junto con el texto "Botón 2".
+
+
+
+3.j) Diferencias entre los segmentos de código y sus visualizaciones
+
+la diferencia clave entre ambos segmentos está en el atributo name de los input type="radio":
+
+Segmento 1: mismo name ("opcion") en ambos → forman un único grupo, comportamiento de selección excluyente (solo una opción posible a la vez), que es el comportamiento esperado y correcto para un conjunto de radio buttons.
+Segmento 2: distinto name ("opcion1" y "opcion2") en cada uno → cada radio button forma su propio grupo independiente, por lo que pierden la exclusión mutua y ambas opciones pueden quedar marcadas simultáneamente, lo cual generalmente es un error de implementación si la intención era que el usuario elija solo una de las dos opciones.
+
+3.k) Diferencias entre los segmentos de código y sus visualizaciones
+
+Segmento 1:
+<select name="lista">
+<optgroup label="Caso 1">
+<option>Mayo</option>
+<option>Junio</option>
+</optgroup>
+<optgroup label="Caso 2">
+<option>Mayo</option>
+<option>Junio</option>
+</optgroup>
+</select>
+
+Segmento 2:
+<select name="lista[]" multiple="multiple">
+<optgroup label="Caso 1">
+<option>Mayo</option>
+<option>Junio</option>
+</optgroup>
+<optgroup label="Caso 2">
+<option>Mayo</option>
+<option>Junio</option>
+</optgroup>
+</select>
+
+la diferencia principal entre ambos segmentos está dada por el atributo multiple:
+- Segmento 1: sin multiple → lista desplegable compacta, selección única (solo una opción posible).
+- Segmento 2: con multiple="multiple" → lista expandida con varias opciones visibles a la vez, selección múltiple posible, y el name se ajusta a "lista[]" para reflejar que se envían varios valores al servidor.
