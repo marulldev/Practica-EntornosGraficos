@@ -1,0 +1,97 @@
+<head>
+  <style>
+    h1 em,
+    h2 em,
+    h3 em,
+    h4 em,
+    h5 em,
+    h6 em {
+      color: red;
+    }
+
+    div p a[href] {
+      color: black;
+    }
+
+    #ultimo ul {
+      color: yellow;
+    }
+
+    #ultimo ul a {
+      color: blue;
+    }
+
+    div .importante {
+      color: green;
+    }
+
+    h1 .importante,
+    h2 .importante,
+    h3 .importante,
+    h4 .importante,
+    h5 .importante,
+    h6 .importante {
+      color: red;
+    }
+
+    h1[title] {
+      color: blue;
+    }
+
+    ol a:link {
+      color: blue;
+      text-decoration: none;
+    }
+
+    ol a:visited {
+      color: violet;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 title="cualquier valor">
+    volador
+    <em> avion </em>
+  </h1>
+  <h2>
+    volador
+    <em> avion </em>
+  </h2>
+  <h3>
+    volador
+    <em> avion </em>
+  </h3>
+  <h4>
+    volador
+    <em> avion </em>
+  </h4>
+  <h5>
+    volador
+    <em> avion </em>
+  </h5>
+  <h6>
+    volador
+    <em> avion </em>
+  </h6>
+
+  <div>
+    <p>
+      <a href="google.com"> google </a>
+    </p>
+  </div>
+
+  <div id="ultimo">
+    <h1><span class="importante">Titulo importante</span></h1>
+    <p class="importante">Parrafo importante</p>
+    <ul>
+      <li>Elemento amarillo</li>
+      <li><a href="otra-pagina.html">Enlace azul</a></li>
+    </ul>
+    <ol>
+      <li><a href="pagina-uno.html">Enlace no visitado</a></li>
+      <li><a href="pagina-dos.html">Enlace visitado</a></li>
+    </ol>
+  </div>
+</body>
