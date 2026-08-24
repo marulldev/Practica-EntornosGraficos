@@ -27,3 +27,60 @@ A nivel de elemento HTML: es la forma más fácil pero menos recomendada. Se def
 A nivel de página: se definen los estilos en una sección especial de la cabecera, encerrada entre las etiquetas <style> y </style>.
 En un archivo externo: es la metodología más empleada.Las reglas de estilo se guardan en un archivo separado con extensión .css, y se vincula
 a la página HTML mediante la etiqueta <link rel="StyleSheet" href="estilos.css" type="text/css"> dentro del <head>.
+
+4.  Tipos de selectores más utilizados
+
+Selector de elemento (o tipo): selecciona todas las etiquetas de un mismo tipo. Ejemplo: p { color: blue; } afecta a todos los párrafos <p>.
+
+Selector de clase: selecciona elementos que tengan una clase específica, y se puede repetir en varios elementos distintos. Se escribe con un punto antes del nombre. 
+Ejemplo: .destacado { font-weight: bold; } afecta a cualquier elemento con class="destacado".
+
+Selector de id: selecciona un único elemento identificado con ese id, que en teoría no debería repetirse en la página. Se escribe con un numeral. 
+Ejemplo: #titulo { color: red; } afecta al elemento con id="titulo".
+
+Selector universal: representa a todos los elementos del documento. Se escribe con un asterisco. Ejemplo: * { margin: 0; }
+
+Selector descendente o contextual: selecciona un elemento que está dentro de otro, sin importar la profundidad. Se escriben los selectores separados por un espacio. 
+Ejemplo: div p { color: green; } afecta solo a los párrafos que estén dentro de un div.
+
+Selector de agrupación: permite aplicar el mismo estilo a varios selectores a la vez, separándolos con comas. Ejemplo: h1, h2, h3 { color: red; }
+
+5.  Pseudo-clases
+
+Una pseudo-clase es una palabra clave que se agrega a un selector para indicar un estado especial del elemento, por ejemplo cuando el mouse pasa por encima de él o cuando el usuario ya visitó un enlace. 
+No depende de una clase o id definida en el HTML, sino de una condición o situación en la que se encuentra el elemento. Se escriben agregando dos puntos después del selector, de la forma selector:pseudo-clase.
+
+Las pseudo-clases más utilizadas, aplicadas a vínculos, son:
+
+link, que representa un enlace todavía no visitado.
+visited, que representa un enlace ya visitado.
+hover, que se activa cuando el mouse pasa por encima del enlace.
+active, que se activa en el momento exacto en que se hace clic sobre el enlace.
+
+Un ejemplo típico sería:
+a:link con color gris, a:visited con color azul, a:hover con color fucsia y a:active con color rojo.
+
+6.  Herencia
+
+La herencia en CSS es la propiedad por la cual un elemento hijo, es decir, un elemento anidado dentro de otro, adquiere automáticamente algunos de los estilos definidos para su elemento padre, 
+sin necesidad de que esa regla se repita explícitamente para el hijo.
+
+Por ejemplo, si se define que el body tiene el texto en color negro y con fuente arial, todos los elementos que estén dentro del body, como párrafos, títulos o listas, heredarán ese color y esa fuente, 
+a menos que se les indique una regla propia que sobrescriba ese valor.
+
+Es importante aclarar que no todas las propiedades se heredan. Generalmente heredan las propiedades relacionadas con el texto, como color, font-family o font-size, mientras que propiedades como márgenes, 
+bordes o padding no se heredan por defecto de un elemento a otro.
+
+7.  El proceso de cascada
+
+La cascada es el mecanismo que utiliza el navegador para decidir qué regla de estilo aplicar cuando existen varias reglas CSS que afectan a un mismo elemento, ya sea porque hay estilos definidos en línea, 
+en la cabecera de la página y en un archivo externo al mismo tiempo, o porque distintos selectores apuntan al mismo elemento.
+
+Para resolver esos conflictos, el navegador tiene en cuenta, en orden de importancia, los siguientes criterios. 
+Primero, si una regla tiene la marca importante agregada, esa regla tiene prioridad por sobre las demás. 
+Segundo, se evalúa la especificidad del selector, entendiendo que cuanto más específico es un selector, mayor peso tiene, siendo en términos generales el id más específico que una clase o pseudo-clase, 
+y esta a su vez más específica que un simple selector de elemento. 
+Tercero, si dos reglas tienen exactamente la misma especificidad, gana la que fue escrita más abajo, es decir, la última que el navegador procesa. 
+Y por último, en términos generales, el estilo definido en línea mediante el atributo style tiene más peso que el definido en la cabecera de la página, y este a su vez más peso que el definido en un archivo externo.
+
+Este conjunto de reglas que determina qué estilo prevalece ante un conflicto es justamente lo que se conoce como cascada, y es el origen del nombre completo de la tecnología, hojas de estilo en cascada.
