@@ -1,0 +1,29 @@
+1. ¿Qué es CSS y para qué se usa?
+
+CSS son las siglas de "hojas de estilo en cascada" (Cascading Style Sheets). 
+Es una tecnología que permite controlar la apariencia de una página web, describiendo cómo se presentan al usuario los elementos dispuestos en la página. 
+Con CSS se pueden especificar estilos como el tamaño, las fuentes, el color, el espaciado entre textos y recuadros, así como el lugar donde disponer texto e imágenes en la página.
+CSS no es un lenguaje de programación ni un lenguaje de marcado, sino un lenguaje de hojas de estilo que permite aplicar estilos de manera selectiva a elementos en documentos HTML.
+
+2. CSS utiliza reglas para las declaraciones de estilo, ¿cómo funcionan?
+
+Una regla CSS está compuesta por:
+
+Un selector (por ejemplo h1), que le indica al navegador qué parte
+del documento se verá afectada por esa regla.
+Una propiedad (por ejemplo color), que especifica qué aspecto se va a cambiar.
+Un valor (por ejemplo red), que establece el valor de esa propiedad.
+
+Ejemplo: h1 {color: red;}
+
+Los selectores pueden aparecer individualmente o agrupados separándolos con comas (ej: h1, h2, h3 { color: red; }).
+Las propiedades que se desean modificar para un mismo selector pueden agruparse, separando cada una con punto y coma.
+Normalmente se describe una propiedad por línea. Si el valor está formado por más de una palabra, debe ir entre comillas (ej: p {font-family: "sans serif";}).
+
+3. ¿Cuáles son las tres formas de dar estilo a un documento?
+
+Según el PDF, podemos asociar las reglas de estilo a las marcas HTML de tres maneras:
+A nivel de elemento HTML: es la forma más fácil pero menos recomendada. Se define en la propiedad style del propio elemento (ej: <h1 style="color:#ff0000;background-color:#ffff00">).
+A nivel de página: se definen los estilos en una sección especial de la cabecera, encerrada entre las etiquetas <style> y </style>.
+En un archivo externo: es la metodología más empleada.Las reglas de estilo se guardan en un archivo separado con extensión .css, y se vincula
+a la página HTML mediante la etiqueta <link rel="StyleSheet" href="estilos.css" type="text/css"> dentro del <head>.
