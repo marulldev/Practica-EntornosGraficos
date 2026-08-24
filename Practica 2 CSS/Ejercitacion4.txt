@@ -1,0 +1,2 @@
+Mientras que en el primer ejemplo, la clase contenido se superpone con el estilo de la etiqueta <p>, el cual tiene una fuente de mayor tamaño.
+en el segundo ejemplo, la clase .contenido esta en el body, pero el <p> ya tiene un estilo pre definido en el stylesheet, dandole prioridad a este y achicando la fuente.
