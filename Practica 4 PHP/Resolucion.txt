@@ -1,0 +1,3 @@
+3) Genera una tabla HTML de 5 filas por 2 columnas con celdas vacías, usando 
+dos bucles for uno para las filas, otro para las columnas, en lugar de escribir el HTML a mano. 
+Sirve para crear tablas de forma dinámica, útil cuando el tamaño de la tabla puede variar (por ejemplo, según datos de una base de datos).
