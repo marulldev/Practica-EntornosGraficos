@@ -1,0 +1,51 @@
+EJERCICIO 1 - ANALISIS DEL CODIGO PHP
+
+VARIABLES Y SU TIPO
+
+$i  -> parametro de la funcion doble() ; tipo mixto (depende de lo recibido)
+$a  -> TRUE                            ; boolean
+$b  -> "xyz"                           ; string
+$c  -> 'xyz'                           ; string
+$d  -> 12                              ; integer
+$f  -> resultado de doble($d++)        ; integer
+$g  -> resultado de $f += 10           ; integer
+
+OPERADORES
+
+- Asignacion: =, +=
+- Aritmeticos: * (multiplicacion), ++ (incremento, prefijo ++$d y sufijo $d++)
+- Ternario: ? :
+
+
+FUNCIONES Y SUS PARAMETROS
+
+- doble($i): funcion definida por el usuario. Recibe un parametro $i y devuelve $i*2.
+- gettype($var): funcion nativa de PHP. Devuelve el tipo de la variable como string.
+- is_int($var): funcion nativa. Devuelve un booleano indicando si la variable es entera.
+- is_string($var): funcion nativa. Devuelve un booleano indicando si la variable es string.
+
+ESTRUCTURAS DE CONTROL
+
+- if (is_int($d)) { ... }        
+- if (is_string($a)) { ... }     
+- $a ? ++$d : $d*3               
+
+TRAZADO PASO A PASO
+--------------------
+1. $a = TRUE (boolean), $b = "xyz" (string), $c = 'xyz' (string), $d = 12 (integer)
+2. Se imprime: boolean, string, string, integer
+3. is_int($d) es true -> $d += 4 -> $d = 16
+4. is_string($a) es false (es boolean) -> NO se ejecuta el echo "Cadena: $a"
+5. $a es truthy -> se toma la rama ++$d -> $d = 17
+6. doble($d++): se pasa el valor actual 17 a la funcion (y luego $d pasa a 18)
+   -> doble(17) = 34 -> $f = 34
+7. $g = $f += 10 -> $f = 44, y $g = 44
+8. echo $a, $b, $c, $d, $f, $g;
+   -> $a al convertirse a string dentro de un echo da "1" (TRUE se imprime como "1")
+
+SALIDA POR PANTALLA
+--------------------
+booleanstringstringinteger1xyzxyz184444
+
+(Todo se concatena sin espacios porque echo con comas no agrega separadores,
+y el if de is_string nunca imprime nada porque $a es boolean, no string.)
