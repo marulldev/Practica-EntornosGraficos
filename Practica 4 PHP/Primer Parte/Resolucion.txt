@@ -7,3 +7,13 @@ b) Este código muestra un formulario para pedir la edad y, al enviarlo, evalúa
 Primera carga de la página: como no se envió el formulario todavía, muestra el <form> con un campo age y un botón "Ir".
 Al hacer clic en "Ir": la página se envía a sí misma ($_SERVER['PHP_SELF']), y como 
 ahora $_POST['submit'] sí existe, entra al else, toma el valor de age y compara: si es >= 21 imprime "Mayor de edad", si no, "Menor de edad".
+
+4)
+El script tiene dos echo con las variables $flor y $color, pero el include 'datos.php' (que las define) está en el medio.
+
+Primer echo (antes del include) las variables todavía no existen entonces salen vacías.
+El (con espacios vacíos donde irían flor y color), a la vez que saltan los errores semanticos.
+include 'datos.php': recién ahí se asignan $color = 'blanco' y $flor = 'clavel'.
+Segundo echo (después del include) las variables ya tienen valor.
+
+Salida final: El El clavel blanco
