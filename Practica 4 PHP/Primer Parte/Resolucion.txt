@@ -1,0 +1,9 @@
+3) a)Genera una tabla HTML de 5 filas por 2 columnas con celdas vacías, usando 
+dos bucles for uno para las filas, otro para las columnas, en lugar de escribir el HTML a mano. 
+Sirve para crear tablas de forma dinámica, útil cuando el tamaño de la tabla puede variar (por ejemplo, según datos de una base de datos).
+
+b) Este código muestra un formulario para pedir la edad y, al enviarlo, evalúa si la persona es mayor o menor de 21 años.
+
+Primera carga de la página: como no se envió el formulario todavía, muestra el <form> con un campo age y un botón "Ir".
+Al hacer clic en "Ir": la página se envía a sí misma ($_SERVER['PHP_SELF']), y como 
+ahora $_POST['submit'] sí existe, entra al else, toma el valor de age y compara: si es >= 21 imprime "Mayor de edad", si no, "Menor de edad".
