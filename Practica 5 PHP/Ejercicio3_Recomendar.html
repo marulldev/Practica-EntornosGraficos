@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Recomendar el sitio a un amigo</title>
+</head>
+
+<body>
+  <h1>Recomendá este sitio a un amigo</h1>
+
+  <form action="Ejercicio3_Enviar.php" method="post">
+    <fieldset>
+      <p><label> Tu nombre <input type="text" name="nombre" size="25" required /> </label></p>
+      <p><label> Tu email <input type="email" name="email" size="25" required /> </label></p>
+      <p><label> Email de tu amigo <input type="email" name="email_amigo" size="25" required /> </label></p>
+      Mensaje (opcional)
+      <p><label><textarea name="texto" cols="32" rows="5"></textarea></label></p>
+      <input type="submit" value="Recomendar" />
+    </fieldset>
+  </form>
+</body>
+
+</html>
