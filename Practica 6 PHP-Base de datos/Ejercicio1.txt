@@ -1,0 +1,58 @@
+Ejercicio 1: Completar - Respuestas
+=====================================================================
+ 
+1. Para inicializar la conexión con el servidor MySQL, PHP ofrece la función:
+   mysqli_connect()
+ 
+2. Todos sus parámetros son opcionales, pero hay tres que generalmente son necesarios:
+   el nombre del servidor (host), el nombre de usuario y la contraseña.
+ 
+3. Una vez abierta la conexión, se debe seleccionar una base de datos mediante la función:
+   mysqli_select_db()
+ 
+4. Esta función debe pasar como parámetro:
+   el identificador de la conexión ($link) y el nombre de la base de datos a utilizar.
+ 
+5. La función mysqli_query() se utiliza para:
+   enviar y ejecutar una consulta SQL (SELECT, INSERT, UPDATE, DELETE, etc.) sobre la base de datos seleccionada.
+ 
+6. y requiere como parámetros:
+   el identificador de la conexión ($link) y la cadena con la consulta SQL.
+ 
+7. La cláusula or die() se utiliza para:
+   detener la ejecución del script y mostrar un mensaje cuando la función anterior falla (por ejemplo, si no se pudo conectar o la consulta dio error).
+ 
+8. y la función mysqli_error() se puede usar para:
+   obtener la descripción textual del último error ocurrido en MySQL, para mostrarla dentro de die() y saber qué falló.
+ 
+ 
+EXPLICACIÓN DEL CÓDIGO
+=====================================================================
+ 
+while ($fila = mysqli_fetch_array($vResultado))
+   En cada vuelta toma la siguiente fila del resultado de la consulta y la
+   guarda en $fila como un arreglo (accesible por índice numérico y por nombre
+   de columna). Cuando ya no quedan filas devuelve NULL, la condición se vuelve
+   falsa y el ciclo termina.
+ 
+Dentro del ciclo
+   Se cierra PHP (?>) y se escribe HTML: por cada fila del resultado se genera
+   una fila <tr> de la tabla con tres celdas <td>, que muestran con echo los
+   valores de las columnas 0, 1 y 2 ($fila[0], $fila[1], $fila[2]).
+ 
+<td colspan="5">
+   Celda que ocupa 5 columnas, usada como fila separadora.
+ 
+}
+   Cierra el while.
+ 
+mysqli_free_result($vResultado);
+   Libera la memoria asociada al conjunto de resultados, ya que no se necesita más.
+ 
+mysqli_close($link);
+   Cierra la conexión con el servidor MySQL.
+ 
+En resumen: el código recorre todos los registros devueltos por la consulta y
+los muestra como filas de una tabla HTML, y al final libera recursos y cierra
+la conexión.
+ 

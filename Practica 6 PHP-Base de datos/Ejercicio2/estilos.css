@@ -1,0 +1,10 @@
+body { font-family: Arial, sans-serif; margin: 30px; }
+nav a { margin-right: 12px; padding: 6px 10px; background: #e8e8e8; text-decoration: none; color: #000; border-radius: 4px; }
+nav a:hover { background: #ccc; }
+table { border-collapse: collapse; margin-top: 20px; }
+th, td { border: 1px solid #aaa; padding: 8px 14px; text-align: center; }
+th { background: #ddd; }
+form label { display: block; margin-top: 10px; }
+.ok { color: green; font-weight: bold; }
+.error { color: red; font-weight: bold; }
+.paginas a, .paginas span { margin-right: 6px; }
