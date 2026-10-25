@@ -1,0 +1,27 @@
+
+.caja {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* ---------- Ejercicio 1 ---------- */
+.fila-morada  { background-color: #a67ca6; }
+.col-durazno  { background-color: #fae6d9; }
+.col-rosa     { background-color: #e0b3b0; }
+
+/* ---------- Ejercicio 2 ---------- */
+.encabezado   { background-color: #a67ca6; min-height: 100px; }
+.sidebar      { background-color: #f4d9d0; min-height: 60px; }
+.barra-verde  { background-color: #66cc85; min-height: 50px; }
+.caja-gris    { background-color: #9e8e96; min-height: 50px; }
+.caja-azul    { background-color: #7b9ecb; min-height: 100px; }
+
+
+@media (min-width: 768px) {
+    .sidebar { min-height: 380px; }
+}

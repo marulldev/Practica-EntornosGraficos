@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Práctica 3 - Componentes</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="estilo.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container my-4">
+
+        <!-- Encabezado -->
+        <div class="row g-3 mb-3">
+            <div class="col-12">
+                <div class="caja encabezado">Encabezado</div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <!-- Ejercicio 2: Barra lateral con un botón que abre un modal -->
+            <div class="col-12 col-md-3">
+                <div class="caja sidebar flex-column gap-2">
+                    <span>Sidebar</span>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSidebar">
+                        Abrir modal
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-9">
+                <div class="row g-3">
+
+                    <!-- Ejercicio 1: div verde con un componente de alerta (alert-success) -->
+                    <div class="col-12">
+                        <div class="caja barra-verde">
+                            <div class="alert alert-success mb-0 w-100" role="alert">
+                                ¡Operación realizada con éxito!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio 3: componente card en cada uno de los 4 rectángulos violetas -->
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <div class="img-placeholder card-img-top">Imagen Cualquiera</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Título</h5>
+                                <p class="card-text">Texto descriptivo</p>
+                                <a href="#" class="btn btn-primary">Link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <div class="img-placeholder card-img-top">Imagen Cualquiera</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Título</h5>
+                                <p class="card-text">Texto descriptivo</p>
+                                <a href="#" class="btn btn-primary">Link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <div class="img-placeholder card-img-top">Imagen Cualquiera</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Título</h5>
+                                <p class="card-text">Texto descriptivo</p>
+                                <a href="#" class="btn btn-primary">Link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <div class="img-placeholder card-img-top">Imagen Cualquiera</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Título</h5>
+                                <p class="card-text">Texto descriptivo</p>
+                                <a href="#" class="btn btn-primary">Link</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Los otros 2 rectángulos grises quedan sin card -->
+                    <div class="col-6 col-md-4"><div class="caja caja-gris">5</div></div>
+                    <div class="col-6 col-md-4"><div class="caja caja-gris">6</div></div>
+
+                    <!-- Celeste chico -->
+                    <div class="col-6 col-md-4"><div class="caja caja-azul">Celeste chico</div></div>
+
+                    <!-- Ejercicio 4: celeste grande (esquina inferior derecha) con un slider (carousel) de 3 imágenes -->
+                    <div class="col-6 col-md-8">
+                        <div class="caja caja-azul p-2">
+                            <div id="carruselCeleste" class="carousel slide w-100" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carruselCeleste" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Imagen 1"></button>
+                                    <button type="button" data-bs-target="#carruselCeleste" data-bs-slide-to="1" aria-label="Imagen 2"></button>
+                                    <button type="button" data-bs-target="#carruselCeleste" data-bs-slide-to="2" aria-label="Imagen 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="img/slide1.svg" class="d-block w-100" alt="Imagen 1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="img/slide2.svg" class="d-block w-100" alt="Imagen 2">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="img/slide3.svg" class="d-block w-100" alt="Imagen 3">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carruselCeleste" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carruselCeleste" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Ejercicio 2: modal con 2 botones (cerrar y guardar cambios).!-->
+    <div class="modal fade" id="modalSidebar" tabindex="-1" aria-labelledby="modalSidebarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalSidebarLabel">Título del modal</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    Contenido del modal.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

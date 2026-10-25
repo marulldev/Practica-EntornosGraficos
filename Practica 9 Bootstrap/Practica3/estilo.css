@@ -1,0 +1,31 @@
+/* Cajas de color para visualizar la grilla (colores tomados de los mockups) */
+.caja {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.encabezado   { background-color: #a67ca6; min-height: 100px; }
+.sidebar      { background-color: #f4d9d0; min-height: 60px; }
+.barra-verde  { background-color: #66cc85; min-height: 50px; padding: 8px; }
+.caja-gris    { background-color: #9e8e96; min-height: 50px; }
+.caja-azul    { background-color: #7b9ecb; min-height: 100px; }
+
+/* La barra lateral es alta solo cuando va al costado (md en adelante) */
+@media (min-width: 768px) {
+    .sidebar { min-height: 380px; }
+}
+
+/* Práctica 3: imagen de relleno de las cards */
+.img-placeholder {
+    height: 110px;
+    background-color: #6c757d;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
